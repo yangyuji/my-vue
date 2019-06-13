@@ -1,0 +1,13 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "a simple modern mvvm web framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./demo.html"
+  },
+  "author": "yangyuji",
+  "devDependencies": {
+    "parcel-bundler": "^1.7.1"
+  }
+}
