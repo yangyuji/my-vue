@@ -27,27 +27,27 @@
 </div>
 <script src="./src/Vue.js"></script>
 <script>
-    new Vue({
-        el: '#app',
-        data: {
-            title: '手把手教你撸一个vue框架',
-            msg1: '<a href="#">应该被解析成a标签</a>',
-            msg2: '<a href="#">不应该被解析成a标签</a>',
-            something: 'placeholder',
-            dad: {
-                bbb: 'foo'
-            }
-        },
-        methods: {
-            sayHi() {
-                this.dad.bbb = 'hello world'
-                console.log(this.something)
-            },
-            printThis() {
-                console.log(this)
-            }
-        }
-    })
+  new Vue({
+    el: '#app',
+    data: {
+      title: '手把手教你撸一个vue框架',
+      msg1: '<a href="#">应该被解析成a标签</a>',
+      msg2: '<a href="#">不应该被解析成a标签</a>',
+      something: 'placeholder',
+      dad: {
+        bbb: 'foo'
+      }
+    },
+    methods: {
+      sayHi() {
+        this.dad.bbb = 'hello world'
+        console.log(this.something)
+      },
+      printThis() {
+        console.log(this)
+      }
+    }
+  })
 </script>
 </body>
 </html>
