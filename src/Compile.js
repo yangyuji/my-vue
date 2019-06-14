@@ -18,12 +18,12 @@ export class Compile {
     let childNodes = fragment.childNodes
     Array.from(childNodes).forEach(node => {
 
-      // 元素节点, 解析指令
+      // 元素节点，解析指令
       if (this.isElementNode(node)) {
         this.compileElementNode(node)
       }
 
-      // 文本节点, 解析差值表达式
+      // 文本节点，解析差值表达式
       if (this.isTextNode(node)) {
         this.compileTextNode(node)
       }
@@ -52,7 +52,7 @@ export class Compile {
   }
 
   node2fragment(node) {
-
+    console.log(node.childNodes)
     let fragment = document.createDocumentFragment()
     let childNodes = node.childNodes
 
@@ -97,7 +97,7 @@ let CompileUtils = {
     expr.split('.').forEach(key => {
       data = data[key]
     })
-    return data
+    return data || ''
   },
   // 赋最深属性的值
   setVMData(vm, expr, value) {
@@ -107,7 +107,7 @@ let CompileUtils = {
       if (index < arr.length - 1) {
         data = data[key]
       } else {
-        data[key] = value
+        data[key] = value || ''
       }
     })
   },

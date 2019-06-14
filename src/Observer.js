@@ -6,13 +6,14 @@ export class Observer {
     this.walk(data)
   }
 
-  // 遍历walk中所有的数据,劫持 set 和 get方法
+  // 遍历walk中所有的数据，劫持 setter 和 getter
   walk(data) {
 
     if (!data || typeof data !== 'object') return
 
     Object.keys(data).forEach(key => {
-      // 给data添加 getter和 setter方法
+
+      // 给 data 添加 getter 和 setter
       this.defineReactive(data, key, data[key])
 
       // 递归进行深度劫持
@@ -28,7 +29,7 @@ export class Observer {
       enumerable: true,
       configurable: true,
       get() {
-        // 如果Dep.target 中有 watcher 对象, 则存储到订阅者数组中
+        // 如果 Dep.target 中有 watcher 对象，则存储到订阅者数组中
         Dep.target && dep.addSub(Dep.target)
         return value
       },
@@ -36,10 +37,10 @@ export class Observer {
         if (value === aValue) return
         value = aValue
 
-        // 如果设置的值是一个对象, 那么这个对象也应该是响应式的
+        // 外层递归，如果设置的值是一个对象，那么这个对象也应该是响应式的
         that.walk(aValue)
 
-        // 发布通知,让所有订阅者更新内容， watcher.update
+        // 发布通知，让所有订阅者更新内容， watcher.update
         dep.notify()
       }
     })

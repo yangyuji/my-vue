@@ -9,41 +9,43 @@
 <body>
 <div id="app">
     {{title}}
-    <!--  解析插值表达式 -->
     <h2>title 是 {{title}}</h2>
-    <!-- 解析常见指令 -->
-    <p v-html='msg1' title='混淆属性1'>混淆文本1</p>
-    <p v-text='msg2' title='混淆属性2'>混淆文本2</p>
-    <input type="text" v-model="something">
-    <!-- 双向数据绑定 -->
-    <p>{{something}}</p>
-    <!-- 复杂数据类型 -->
-    <p v-text="dad.bbb"></p>
-    <p v-html='dad.bbb'></p>
-    <input type="text" v-model="dad.bbb">
+    <p id="html" v-html='link1'></p>
+    <p id="text" v-text='link2'></p>
 
-    <button @click='sayHi'>sayHi</button>
-    <button @click='printThis'>printThis</button>
+    <div class="top">
+        <input type="text" v-model="content">
+        <button @click='getVal'>getVal</button>
+    </div>
+
+    <div class="bottom">
+        <p class="p"><span class="span">{{content}}</span></p>
+        <p v-text="obj.name"></p>
+        <p v-html='obj.name'></p>
+        <input type="text" v-model="obj.name">
+        <p class="getThis">
+            <button @click='getThis'>getThis</button>
+        </p>
+    </div>
 </div>
 <script src="./src/Vue.js"></script>
 <script>
   new Vue({
     el: '#app',
     data: {
-      title: '手把手教你撸一个vue框架',
-      msg1: '<a href="#">应该被解析成a标签</a>',
-      msg2: '<a href="#">不应该被解析成a标签</a>',
-      something: 'placeholder',
-      dad: {
-        bbb: 'foo'
+      title: '撸一个简单的vue框架',
+      link1: '<a href="#">解析成a标签</a>',
+      link2: '<a href="#">不解析成a标签</a>',
+      content: '这是动态内容',
+      obj: {
+        name: 'foo'
       }
     },
     methods: {
-      sayHi() {
-        this.dad.bbb = 'hello world'
-        console.log(this.something)
+      getVal() {
+        console.log(this.content)
       },
-      printThis() {
+      getThis() {
         console.log(this)
       }
     }
