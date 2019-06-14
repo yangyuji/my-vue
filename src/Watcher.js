@@ -12,11 +12,10 @@ export class Watcher {
     this.expr = expr
     this.callback = callback
 
-    // 防止 getter 的时候进入递归
     Dep.target = this
 
     this.oldValue = this.getVMData(vm, expr)
-
+    // 防止给 data 对象重复添加 Watcher
     Dep.target = null
   }
 

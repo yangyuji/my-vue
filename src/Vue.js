@@ -14,9 +14,8 @@ export class Vue {
     this.$data = options.data
     this.$methods = options.methods
 
-    // 将data,methods里面的属性挂载根实例中
+    // 将data对象挂载根实例中
     this.proxy(this.$data)
-    this.proxy(this.$methods)
 
     // 监听数据
     new Observer(this.$data)
@@ -33,11 +32,10 @@ export class Vue {
         enumerable: true,
         configurable: true,
         set(value) {
-          if (data[key] === value) return
-          return value
+          this.$data[key] = value
         },
         get() {
-          return data[key]
+          return this.$data[key]
         }
       })
     })

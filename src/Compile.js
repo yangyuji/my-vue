@@ -139,13 +139,17 @@ let CompileUtils = {
   },
   // 解析v-model
   model(node, vm, expr) {
+    // 赋初始值
     node.value = this.getVMData(vm, expr)
-    node.addEventListener('input', () => {
-      // 深度改变数据
-      this.setVMData(vm, expr, node.value)
-    })
+
+    // 订阅并处理
     new Watcher(vm, expr, newValue => {
       node.value = newValue
+    })
+
+    node.addEventListener('input', (e) => {
+      // 深度改变数据
+      this.setVMData(vm, expr, e.target.value)
     })
   },
   // 解析事件绑定@

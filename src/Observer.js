@@ -40,7 +40,7 @@ export class Observer {
         // 外层递归，如果设置的值是一个对象，那么这个对象也应该是响应式的
         that.walk(aValue)
 
-        // 发布通知，让所有订阅者更新内容， watcher.update
+        // 发布通知，让所有订阅者更新内容
         dep.notify()
       }
     })

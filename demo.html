@@ -14,16 +14,17 @@
     <p id="text" v-text='link2'></p>
 
     <div class="top">
-        <input type="text" v-model="content">
+        <input id="content" type="text" v-model="content">
+        <p class="p"><span class="span">{{content}}</span></p>
         <button @click='getVal'>getVal</button>
     </div>
 
     <div class="bottom">
-        <p class="p"><span class="span">{{content}}</span></p>
         <p v-text="obj.name"></p>
         <p v-html='obj.name'></p>
-        <input type="text" v-model="obj.name">
+        <input id="obj" type="text" v-model="obj.name">
         <p class="getThis">
+            <button @click='change'>change</button>
             <button @click='getThis'>getThis</button>
         </p>
     </div>
@@ -36,10 +37,10 @@
       title: '撸一个简单的vue框架',
       link1: '<a href="#">解析成a标签</a>',
       link2: '<a href="#">不解析成a标签</a>',
-      content: '这是动态内容',
       obj: {
         name: 'foo'
-      }
+      },
+      content: '这是动态内容'
     },
     methods: {
       getVal() {
@@ -47,6 +48,10 @@
       },
       getThis() {
         console.log(this)
+      },
+      change() {
+        this.content = 'content changed'
+        this.obj.name = 'name changed'
       }
     }
   })
