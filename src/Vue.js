@@ -10,7 +10,7 @@ import {Compile} from './Compile.js'
 
 export class Vue {
   constructor(options = {}) {
-    this.$el = options.el
+    this.$el = options.el || document.body
     this.$data = options.data
     this.$methods = options.methods
 
@@ -20,9 +20,7 @@ export class Vue {
     // 监听数据
     new Observer(this.$data)
 
-    if (this.$el) {
-      new Compile(this.$el, this)
-    }
+    new Compile(this.$el, this)
   }
 
   proxy(data = {}) {

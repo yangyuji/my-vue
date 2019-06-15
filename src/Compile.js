@@ -13,6 +13,18 @@ export class Compile {
     }
   }
 
+  node2fragment(node) {
+    console.log(node.childNodes)
+    let fragment = document.createDocumentFragment()
+    let childNodes = node.childNodes
+
+    Array.from(childNodes).forEach(node => {
+      fragment.appendChild(node)
+    })
+
+    return fragment
+  }
+
   // 解析fragment里面的节点
   compile(fragment) {
     let childNodes = fragment.childNodes
@@ -28,39 +40,11 @@ export class Compile {
         this.compileTextNode(node)
       }
 
-      // 递归
+      // 递归解析元素
       if (node.childNodes && node.childNodes.length > 0) {
         this.compile(node)
       }
     })
-  }
-
-  isTextNode(node) {
-    return node.nodeType === 3
-  }
-
-  isElementNode(node) {
-    return node.nodeType === 1
-  }
-
-  isEventDirective(name) {
-    return name.includes('@')
-  }
-
-  isDirective(name) {
-    return name.includes('v-')
-  }
-
-  node2fragment(node) {
-    console.log(node.childNodes)
-    let fragment = document.createDocumentFragment()
-    let childNodes = node.childNodes
-
-    Array.from(childNodes).forEach(node => {
-      fragment.appendChild(node)
-    })
-
-    return fragment
   }
 
   compileTextNode(node) {
@@ -87,6 +71,22 @@ export class Compile {
         CompileUtils[type](node, this.vm, expr)
       }
     })
+  }
+
+  isTextNode(node) {
+    return node.nodeType === 3
+  }
+
+  isElementNode(node) {
+    return node.nodeType === 1
+  }
+
+  isEventDirective(name) {
+    return name.includes('@')
+  }
+
+  isDirective(name) {
+    return name.includes('v-')
   }
 }
 
