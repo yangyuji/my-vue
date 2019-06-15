@@ -4,7 +4,8 @@
   "description": "a simple modern mvvm web framework",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./demo.html"
+    "start": "parcel ./demo.html",
+    "build": "parcel build demo.html -d docs/ --public-url /my-vue/"
   },
   "author": "yangyuji",
   "devDependencies": {

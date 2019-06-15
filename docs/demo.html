@@ -1,0 +1,6 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"><meta content="telephone=no,email=no" name="format-detection"><title>vue demo</title></head><body>
+<div id="app"> {{title}} <h2>title 是 {{title}}</h2> <p id="html" v-html="link1"></p> <p id="text" v-text="link2"></p> <div class="top"> <input id="content" type="text" v-model="content"> <p class="p"><span class="span">{{content}}</span></p> <button @click="getVal">getVal</button> </div> <div class="bottom"> <p v-text="obj.name"></p> <p v-html="obj.name"></p> <input id="obj" type="text" v-model="obj.name"> <p class="getThis"> <button @click="change">change</button> <button @click="getThis">getThis</button> </p> </div>
+</div>
+<script src="/my-vue/Vue.a61019c3.js"></script>
+<script>new Vue({el:"#app",data:{title:"撸一个简单的vue框架",link1:'<a href="#">解析成a标签</a>',link2:'<a href="#">不解析成a标签</a>',obj:{name:"foo"},content:"这是动态内容"},methods:{getVal:function(){console.log(this.content)},getThis:function(){console.log(this)},change:function(){this.content="content changed",this.obj.name="name changed"}}});</script>
+</body></html>

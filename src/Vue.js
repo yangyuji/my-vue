@@ -8,7 +8,7 @@ import {Compile} from './Compile.js'
  * 3. 编译挂载点内的指令和插值表达式
  */
 
-export class Vue {
+class Vue {
   constructor(options = {}) {
     this.$el = options.el || document.body
     this.$data = options.data

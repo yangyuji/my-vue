@@ -116,7 +116,7 @@ let CompileUtils = {
     let txt = node.textContent
     let reg = /\{\{(.+)\}\}/
     if (reg.test(txt)) {
-      let expr = RegExp.$1
+      let expr = RegExp.$1.trim()
       node.textContent = txt.replace(reg, this.getVMData(vm, expr))
       new Watcher(vm, expr, newValue => {
         node.textContent = txt.replace(reg, newValue)
